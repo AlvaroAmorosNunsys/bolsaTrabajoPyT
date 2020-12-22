@@ -1,0 +1,42 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="historialPosicion">
+            <h2><span>Historial Posicion</span> {{ historialPosicion.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Fecha Cambio</span></dt>
+                <dd>
+                    <span>{{ historialPosicion.fechaCambio }}</span>
+                </dd>
+                <dt><span>Estado Posicion</span></dt>
+                <dd>
+                    <div *ngIf="historialPosicion.estadoPosicionId">
+                        <a [routerLink]="['/estado-posicion', historialPosicion.estadoPosicionId, 'view']">{{ historialPosicion.estadoPosicionNombre }}</a>
+                    </div>
+                </dd>
+                <dt><span>Posicion</span></dt>
+                <dd>
+                    <div *ngIf="historialPosicion.posicionId">
+                        <a [routerLink]="['/posicion', historialPosicion.posicionId, 'view']">{{ historialPosicion.posicionTitulo }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/historial-posicion', historialPosicion.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

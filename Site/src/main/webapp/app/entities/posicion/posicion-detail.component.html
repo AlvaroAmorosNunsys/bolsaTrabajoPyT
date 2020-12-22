@@ -1,0 +1,72 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="posicion">
+            <h2><span>Posicion</span> {{ posicion.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Titulo</span></dt>
+                <dd>
+                    <span>{{ posicion.titulo }}</span>
+                </dd>
+                <dt><span>Descripcion</span></dt>
+                <dd>
+                    <span>{{ posicion.descripcion }}</span>
+                </dd>
+                <dt><span>Numero Puestos</span></dt>
+                <dd>
+                    <span>{{ posicion.numeroPuestos }}</span>
+                </dd>
+                <dt><span>Salario Minimo</span></dt>
+                <dd>
+                    <span>{{ posicion.salarioMinimo }}</span>
+                </dd>
+                <dt><span>Salario Maximo</span></dt>
+                <dd>
+                    <span>{{ posicion.salarioMaximo }}</span>
+                </dd>
+                <dt><span>Fecha Alta</span></dt>
+                <dd>
+                    <span>{{ posicion.fechaAlta }}</span>
+                </dd>
+                <dt><span>Fecha Necesidad</span></dt>
+                <dd>
+                    <span>{{ posicion.fechaNecesidad }}</span>
+                </dd>
+                <dt><span>Estado Posicion</span></dt>
+                <dd>
+                    <div *ngIf="posicion.estadoPosicionId">
+                        <a [routerLink]="['/estado-posicion', posicion.estadoPosicionId, 'view']">{{ posicion.estadoPosicionNombre }}</a>
+                    </div>
+                </dd>
+                <dt><span>Tipo Jornada</span></dt>
+                <dd>
+                    <div *ngIf="posicion.tipoJornadaId">
+                        <a [routerLink]="['/tipo-jornada', posicion.tipoJornadaId, 'view']">{{ posicion.tipoJornadaNombre }}</a>
+                    </div>
+                </dd>
+                <dt><span>Unidad De Negocio</span></dt>
+                <dd>
+                    <div *ngIf="posicion.unidadDeNegocioId">
+                        <a [routerLink]="['/unidad-de-negocio', posicion.unidadDeNegocioId, 'view']">{{ posicion.unidadDeNegocioNombre }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/posicion', posicion.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

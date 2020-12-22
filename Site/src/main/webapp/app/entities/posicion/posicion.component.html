@@ -1,0 +1,234 @@
+<div>
+    <h2 id="page-heading">
+        <span>Posicions</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-posicion" [routerLink]="['/posicion/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span>
+            Create a new Posicion
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <!-- Div Filter-->
+    <p>
+        <button type="button" class="btn btn-outline-primary" (click)="isCollapsed=!isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">
+            Desplegar Filtros
+        </button>
+    </p>
+    <!-- Inputs filtros-->
+    <div #collapse="ngbCollapse" [ngbCollapse]="!isCollapsed">
+
+        <div class="form-group p-3 card">
+
+
+            <div class="row d-flex justify-content-start">
+                <div class="col-md-4">
+                    <label for="tituloFilter">Titulo: </label>
+                    <input type="text" name="tituloFilter" id="tituloFilter" [(ngModel)]="filter.titulo">
+                </div>
+                <div class="col-md-4">
+                    <label for="descripcionFilter">Descripción: </label>
+                    <input type="text" name="descripcionFilter" id="descripcionFilter" [(ngModel)]="filter.descripcion">
+                </div>
+                <div class="col-md-4">
+                    <label for="numeroPuestosFilter">Número de Puestos: </label>
+                    <input type="number" name="numeroPuestosFilter" id="numeroPuestosFilter" min="0" [(ngModel)]="filter.numeroPuestos">
+                </div>
+
+            </div>
+            <div class="row d-flex justify-content-start">
+                <div class="col-md-4">
+                    <label for="minfechaAltaFilter">FechaAlta Desde: </label>
+                    <input type="date" name="minfechaAltaFilter" id="minfechaAltaFilter" [(ngModel)]="filter.minFechaAlta">
+                </div>
+                <div class="col-md-4">
+                    <label for="maxfechaAltaFilter">FechaAlta Hasta: </label>
+                    <input type="date" name="maxfechaAltaFilter" id="maxfechaAltaFilter" [(ngModel)]="filter.maxFechaAlta">
+                </div>
+            </div>
+            <div class="row d-flex justify-content-start">
+                <div class="col-md-4">
+                    <label for="minfechaNecesidadFilter">FechaNecesidad Desde: </label>
+                    <input type="date" name="minfechaNecesidadFilter" id="minfechaNecesidadFilter" [(ngModel)]="filter.minFechaNecesidad">
+                </div>
+                <div class="col-md-4">
+                    <label for="maxfechaNecesidadFilter">FechaNecesidad Hasta: </label>
+                    <input type="date" name="maxfechaNecesidadFilter" id="maxfechaNecesidadFilter" [(ngModel)]="filter.maxFechaNecesidad">
+                </div>
+            </div>
+            <div class="row d-flex justify-content-start">
+                <div class="col-md-6">
+                    <div class="d-flex justify-content-center my-4">
+                        <label for="numeroPuestosFilter col-md-3">Salario Mínimo: </label>
+                        <div class="w-75 col-md-6">
+                            <input type="range" class="custom-range" id="customRange1" min="0" max="40000" (change)="onChangeEvent($event)" [(ngModel)]="filter.salarioMinimo">
+                        </div>
+                        <span class="font-weight-bold text-primary ml-2 valueSpan2 col-md-3">{{filter.salarioMinimo}}</span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="d-flex justify-content-center my-4">
+                        <label for="numeroPuestosFilter col-md-3">Salario Máximo: </label>
+                        <div class="w-75 col-md-6">
+                            <input type="range" class="custom-range" id="customRange2" min="0" max="40000" (change)="onChangeEvent($event)" [(ngModel)]="filter.salarioMaximo">
+                        </div>
+                        <span class="font-weight-bold text-primary ml-2 valueSpan2 col-md-3">{{filter.salarioMaximo}}</span>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="row d-flex justify-content-start">
+                <div class="col-md-4">
+                    <label for="minfechaAltaFilter">Estado: </label>
+                    <select class="browser-default custom-select" [(ngModel)]="filter.estadoPosicionId">
+                            <option selected [value]=""></option>
+                            <option *ngFor="let opt of estadoPosicionList; let i = index" [value]="opt.id" >
+                                {{i}}. {{opt.nombre}}
+                            </option>
+                          </select>
+                </div>
+                <div class="col-md-4">
+                    <label for="maxfechaAltaFilter">Tpo Jornada: </label>
+                    <select class="browser-default custom-select" [(ngModel)]="filter.tipoJornadaId">
+                            <option selected [value]=""></option>
+                            <option *ngFor="let opt of tipoJornadaList; let i = index" [value]="opt.id" >
+                                {{i}}. {{opt.nombre}}
+                            </option>
+                          </select>
+                </div>
+            </div>
+            <!-- btn Limpiar-->
+            <div class="d-flex justify-content-end">
+                <button id="search-filter" class="btn btn-primary float-right col-md-2 m-3" (click)="limpiarFiltro()">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span>
+                    Limpiar
+                    </span>
+                </button>
+            </div>
+            <!-- btn Buscar-->
+            <div class="d-flex justify-content-end">
+                <button id="search-filter" class="btn btn-primary float-right col-md-2 m-3" (click)="buscar()">
+                    <fa-icon icon="search"></fa-icon>
+                    <span>
+                    Buscar
+                    </span>
+                </button>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="posicions?.length === 0">
+        <span>No posicions found</span>
+    </div>
+
+
+
+    <!-- -->
+    <div class="table-responsive" id="entities" *ngIf="posicions && posicions.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col" jhiSortBy="id"><span>ID</span>
+                        <fa-icon icon="sort"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="titulo"><span>Titulo</span>
+                        <fa-icon icon="sort"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="descripcion"><span>Descripcion</span>
+                        <fa-icon icon="sort"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="numeroPuestos"><span>Numero Puestos</span>
+                        <fa-icon icon="sort"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="salarioMinimo"><span>Salario Minimo</span>
+                        <fa-icon icon="sort"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="salarioMaximo"><span>Salario Maximo</span>
+                        <fa-icon icon="sort"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="fechaAlta"><span>Fecha Alta</span>
+                        <fa-icon icon="sort"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="fechaNecesidad"><span>Fecha Necesidad</span>
+                        <fa-icon icon="sort"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="estadoPosicionNombre"><span>Estado Posicion</span>
+                        <fa-icon icon="sort"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="tipoJornadaNombre"><span>Tipo Jornada</span>
+                        <fa-icon icon="sort"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="unidadDeNegocioNombre" *ngIf="!filter.unidadDeNegocioId"><span>Unidad De Negocio</span>
+                        <fa-icon icon="sort"></fa-icon>
+                    </th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let posicion of posicions ;trackBy: trackId">
+                    <td><a [routerLink]="['/posicion', posicion.id, 'view']">{{ posicion.id }}</a></td>
+                    <td>{{ posicion.titulo }}</td>
+                    <td>{{ posicion.descripcion }}</td>
+                    <td>{{ posicion.numeroPuestos }}</td>
+                    <td>{{ posicion.salarioMinimo }}</td>
+                    <td>{{ posicion.salarioMaximo }}</td>
+                    <td>{{ posicion.fechaAlta | date:'mediumDate' }}</td>
+                    <td>{{ posicion.fechaNecesidad | date:'mediumDate' }}</td>
+                    <td>
+                        <div *ngIf="posicion.estadoPosicionId">
+                            <a [routerLink]="['/estado-posicion', posicion.estadoPosicionId , 'view']">{{ posicion.estadoPosicionNombre }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="posicion.tipoJornadaId">
+                            <a [routerLink]="['/tipo-jornada', posicion.tipoJornadaId , 'view']">{{ posicion.tipoJornadaNombre }}</a>
+                        </div>
+                    </td>
+                    <td *ngIf="!filter.unidadDeNegocioId">
+                        <div *ngIf="posicion.unidadDeNegocioId">
+                            <a [routerLink]="['/unidad-de-negocio', posicion.unidadDeNegocioId , 'view']">{{ posicion.unidadDeNegocioNombre }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit" [routerLink]="['/posicion', posicion.id, 'view']" class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline">View</span>
+                            </button>
+
+                            <button type="submit" [routerLink]="['/posicion', posicion.id, 'edit']" class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(posicion)" class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="posicions && posicions.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

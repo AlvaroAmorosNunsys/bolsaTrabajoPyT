@@ -1,0 +1,36 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="usuario">
+            <h2><span>Usuario</span> {{ usuario.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>User</span></dt>
+                <dd>
+                    {{ usuario.userLogin }}
+                </dd>
+                <dt><span>Unidad De Negocio</span></dt>
+                <dd>
+                    <div *ngIf="usuario.unidadDeNegocioId">
+                        <a [routerLink]="['/unidad-de-negocio', usuario.unidadDeNegocioId, 'view']">{{ usuario.unidadDeNegocioNombre }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/usuario', usuario.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

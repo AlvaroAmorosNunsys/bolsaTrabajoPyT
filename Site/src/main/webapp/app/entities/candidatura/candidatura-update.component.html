@@ -1,0 +1,58 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-candidatura-heading">Create or edit a Candidatura</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_estadoCandidatura">Estado Candidatura</label>
+                    <select class="form-control" id="field_estadoCandidatura" name="estadoCandidatura" formControlName="estadoCandidaturaId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="estadoCandidaturaOption.id" *ngFor="let estadoCandidaturaOption of estadocandidaturas; trackBy: trackById">{{ estadoCandidaturaOption.nombre }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_fuente">Fuente</label>
+                    <select class="form-control" id="field_fuente" name="fuente" formControlName="fuenteId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="fuenteOption.id" *ngFor="let fuenteOption of fuentes; trackBy: trackById">{{ fuenteOption.nombre }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_posicion">Posicion</label>
+                    <select class="form-control" id="field_posicion" name="posicion" formControlName="posicionId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="posicionOption.id" *ngFor="let posicionOption of posicions; trackBy: trackById">{{ posicionOption.titulo }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_persona">Persona</label>
+                    <select class="form-control" id="field_persona" name="persona" formControlName="personaId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="personaOption.id" *ngFor="let personaOption of personas; trackBy: trackById">{{ personaOption.documentoIdentidad }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

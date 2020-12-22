@@ -1,0 +1,135 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-posicion-heading">Create or edit a Posicion</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_titulo">Titulo</label>
+                    <input type="text" class="form-control" name="titulo" id="field_titulo" formControlName="titulo" />
+                    <div *ngIf="editForm.get('titulo')!.invalid && (editForm.get('titulo')!.dirty || editForm.get('titulo')!.touched)">
+                        <small class="form-text text-danger" *ngIf="editForm.get('titulo')?.errors?.required">
+                        Este campo es requerido.
+                        </small>
+                        <small class="form-text text-danger" *ngIf="editForm.get('titulo')?.errors?.maxlength">
+                        La longitud del campo no puede ser mayor de 250 caracteres.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_descripcion">Descripcion</label>
+                    <input type="text" class="form-control" name="descripcion" id="field_descripcion" formControlName="descripcion" />
+                    <div *ngIf="editForm.get('descripcion')!.invalid && (editForm.get('descripcion')!.dirty || editForm.get('descripcion')!.touched)">
+                        <small class="form-text text-danger" *ngIf="editForm.get('descripcion')?.errors?.required">
+                            Este campo es requerido.
+                        </small>
+                        <small class="form-text text-danger" *ngIf="editForm.get('descripcion')?.errors?.maxlength">
+                            La longitud del campo no puede ser mayor de 5000 caracteres.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_numeroPuestos">Numero Puestos</label>
+                    <input type="number" class="form-control" name="numeroPuestos" id="field_numeroPuestos" formControlName="numeroPuestos" />
+                    <div *ngIf="editForm.get('numeroPuestos')!.invalid && (editForm.get('numeroPuestos')!.dirty || editForm.get('numeroPuestos')!.touched)">
+                        <small class="form-text text-danger" *ngIf="editForm.get('numeroPuestos')?.errors?.required">
+                            Este campo es requerido.
+                        </small>
+                        <small class="form-text text-danger" *ngIf="editForm.get('numeroPuestos')?.errors?.min">
+                            El mímino de puestos para crear una posición es de 1.
+                        </small>
+                        <small class="form-text text-danger" [hidden]="!editForm.get('numeroPuestos')?.errors?.number">
+                            Este campo solo puede ser un numero.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_salarioMinimo">Salario Minimo</label>
+                    <input type="number" class="form-control" name="salarioMinimo" id="field_salarioMinimo" formControlName="salarioMinimo" />
+                    <small class="form-text text-danger" [hidden]="!editForm.get('salarioMinimo')?.errors?.number">
+                        Este campo solo puede ser un numero.
+                    </small>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_salarioMaximo">Salario Maximo</label>
+                    <input type="number" class="form-control" name="salarioMaximo" id="field_salarioMaximo" formControlName="salarioMaximo" />
+                    <small class="form-text text-danger" [hidden]="!editForm.get('salarioMaximo')?.errors?.number">
+                        Este campo solo puede ser un numero.
+                    </small>
+                </div>
+                <!-- Fecha Alta solo en UPDATE-->
+                <div class="form-group" [hidden]="!editForm.get('fechaAlta')!.value">
+                    <label class="form-control-label" for="field_fechaAlta">Fecha Alta</label>
+                    <div class="input-group">
+                        <input id="field_fechaAlta" type="text" class="form-control" name="fechaAlta" ngbDatepicker #fechaAltaDp="ngbDatepicker" formControlName="fechaAlta" />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="fechaAltaDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                        </span>
+                    </div>
+                    <div *ngIf="editForm.get('fechaAlta')!.invalid && (editForm.get('fechaAlta')!.dirty || editForm.get('fechaAlta')!.touched)">
+                        <small class="form-text text-danger" *ngIf="editForm.get('fechaAlta')?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_fechaNecesidad">Fecha Necesidad</label>
+                    <div class="input-group">
+                        <input id="field_fechaNecesidad" type="text" class="form-control" name="fechaNecesidad" ngbDatepicker #fechaNecesidadDp="ngbDatepicker" formControlName="fechaNecesidad" />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="fechaNecesidadDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                        </span>
+                    </div>
+                    <div *ngIf="editForm.get('fechaNecesidad')!.invalid && (editForm.get('fechaNecesidad')!.dirty || editForm.get('fechaNecesidad')!.touched)">
+                        <small class="form-text text-danger" *ngIf="editForm.get('fechaNecesidad')?.errors?.required">
+                            Este campo es requerido.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_estadoPosicion">Estado Posicion</label>
+                    <select class="form-control" id="field_estadoPosicion" name="estadoPosicion" formControlName="estadoPosicionId">
+                        <option [ngValue]="estadoPosicionOption.id" *ngFor="let estadoPosicionOption of estadoposicions; trackBy: trackById">{{ estadoPosicionOption.nombre }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_tipoJornada">Tipo Jornada</label>
+                    <select class="form-control" id="field_tipoJornada" name="tipoJornada" formControlName="tipoJornadaId">
+                        <option [ngValue]="tipoJornadaOption.id" *ngFor="let tipoJornadaOption of tipojornadas; trackBy: trackById">{{ tipoJornadaOption.nombre }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group" [hidden]="editForm.get('unidadDeNegocioId')!.value">
+                    <label class="form-control-label" for="field_unidadDeNegocio">Unidad De Negocio</label>
+                    <select class="form-control" id="field_unidadDeNegocio" name="unidadDeNegocio" formControlName="unidadDeNegocioId">
+                        <option [ngValue]="unidadDeNegocioOption.id" *ngFor="let unidadDeNegocioOption of unidaddenegocios; trackBy: trackById">{{ unidadDeNegocioOption.nombre }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

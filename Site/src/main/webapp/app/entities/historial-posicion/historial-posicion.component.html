@@ -1,0 +1,83 @@
+<div>
+    <h2 id="page-heading">
+        <span>Historial Posicions</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-historial-posicion" [routerLink]="['/historial-posicion/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span>
+            Create a new Historial Posicion
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="historialPosicions?.length === 0">
+        <span>No historialPosicions found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="historialPosicions && historialPosicions.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span>ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="fechaCambio"><span>Fecha Cambio</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="estadoPosicionNombre"><span>Estado Posicion</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="posicionTitulo"><span>Posicion</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let historialPosicion of historialPosicions ;trackBy: trackId">
+                    <td><a [routerLink]="['/historial-posicion', historialPosicion.id, 'view']">{{ historialPosicion.id }}</a></td>
+                    <td>{{ historialPosicion.fechaCambio | date:'mediumDate' }}</td>
+                    <td>
+                        <div *ngIf="historialPosicion.estadoPosicionId">
+                            <a [routerLink]="['/estado-posicion', historialPosicion.estadoPosicionId , 'view']" >{{ historialPosicion.estadoPosicionNombre }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="historialPosicion.posicionId">
+                            <a [routerLink]="['/posicion', historialPosicion.posicionId , 'view']" >{{ historialPosicion.posicionTitulo }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/historial-posicion', historialPosicion.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/historial-posicion', historialPosicion.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(historialPosicion)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="historialPosicions && historialPosicions.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

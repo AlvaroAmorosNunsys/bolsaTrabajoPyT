@@ -1,0 +1,89 @@
+<div>
+    <h2 id="page-heading">
+        <span>Historial Candidaturas</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-historial-candidatura" [routerLink]="['/historial-candidatura/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span>
+            Create a new Historial Candidatura
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="historialCandidaturas?.length === 0">
+        <span>No historialCandidaturas found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="historialCandidaturas && historialCandidaturas.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span>ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="fechaCambio"><span>Fecha Cambio</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="posicionTitulo"><span>Posicion</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="candidaturaId"><span>Candidatura</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="estadoCandidaturaNombre"><span>Estado Candidatura</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let historialCandidatura of historialCandidaturas ;trackBy: trackId">
+                    <td><a [routerLink]="['/historial-candidatura', historialCandidatura.id, 'view']">{{ historialCandidatura.id }}</a></td>
+                    <td>{{ historialCandidatura.fechaCambio | date:'mediumDate' }}</td>
+                    <td>
+                        <div *ngIf="historialCandidatura.posicionId">
+                            <a [routerLink]="['/posicion', historialCandidatura.posicionId , 'view']" >{{ historialCandidatura.posicionTitulo }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="historialCandidatura.candidaturaId">
+                            <a [routerLink]="['/candidatura', historialCandidatura.candidaturaId , 'view']" >{{ historialCandidatura.candidaturaId }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="historialCandidatura.estadoCandidaturaId">
+                            <a [routerLink]="['/estado-candidatura', historialCandidatura.estadoCandidaturaId , 'view']" >{{ historialCandidatura.estadoCandidaturaNombre }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/historial-candidatura', historialCandidatura.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/historial-candidatura', historialCandidatura.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(historialCandidatura)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="historialCandidaturas && historialCandidaturas.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

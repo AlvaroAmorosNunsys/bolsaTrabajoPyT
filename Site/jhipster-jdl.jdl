@@ -1,0 +1,89 @@
+entity Posicion {
+titulo String required maxlength(250),
+descripcion String required maxlength(5000),
+numeroPuestos Integer required min(1),
+salarioMinimo Long,
+salarioMaximo Long,
+fechaAlta LocalDate required,
+fechaNecesidad LocalDate required
+}
+entity UnidadDeNegocio {
+nombre String required maxlength(250)
+}
+
+entity Candidatura {
+
+}
+entity Persona {
+documentoIdentidad String required unique,
+nombre String required maxlength(100),
+apellidos String required maxlength(250),
+email String required maxlength(250)
+telefono String required,
+curriculum Blob required,
+comentarios String maxlength(5000)
+}
+
+entity EstadoPosicion {
+nombre String required unique
+porDefecto Boolean required
+}
+
+entity EstadoCandidatura {
+nombre String required unique
+porDefecto Boolean required
+
+}
+
+entity Fuente {
+nombre String required unique
+}
+
+entity TipoJornada {
+nombre String required unique maxlength(100)
+}
+
+entity HistorialPosicion {
+fechaCambio LocalDate required
+
+}
+entity HistorialCandidatura {
+fechaCambio LocalDate required
+}
+
+entity Usuario {
+
+}
+
+relationship OneToOne {
+	Usuario{user(login)} to User with jpaDerivedIdentifier
+}
+
+relationship OneToMany {
+UnidadDeNegocio to Posicion{unidadDeNegocio(nombre)},
+UnidadDeNegocio to Usuario{unidadDeNegocio(nombre)},
+Posicion to Candidatura{posicion(titulo)},
+Persona to Candidatura{persona(documentoIdentidad)},
+Posicion to HistorialCandidatura{posicion(titulo)},
+Candidatura to HistorialCandidatura,
+EstadoPosicion to HistorialPosicion{estadoPosicion(nombre)},
+EstadoCandidatura to HistorialCandidatura{estadoCandidatura(nombre)},
+Posicion to HistorialPosicion{posicion(titulo)}
+
+}
+
+relationship ManyToOne {
+Posicion{estadoPosicion(nombre)} to EstadoPosicion,
+Candidatura{estadoCandidatura(nombre)} to EstadoCandidatura,
+Candidatura{fuente(nombre)} to Fuente,
+Posicion{tipoJornada(nombre)} to TipoJornada
+}
+
+  paginate EstadoPosicion, EstadoCandidatura, UnidadDeNegocio with infinite-scroll
+  paginate * with pagination
+
+dto * with mapstruct
+service * with serviceImpl
+filter *
+
+

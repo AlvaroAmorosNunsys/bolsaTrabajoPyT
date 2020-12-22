@@ -1,0 +1,66 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-historial-candidatura-heading">Create or edit a Historial Candidatura</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_fechaCambio">Fecha Cambio</label>
+                    <div class="input-group">
+                        <input id="field_fechaCambio" type="text" class="form-control" name="fechaCambio" ngbDatepicker #fechaCambioDp="ngbDatepicker" formControlName="fechaCambio"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="fechaCambioDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                        </span>
+                    </div>
+                    <div *ngIf="editForm.get('fechaCambio')!.invalid && (editForm.get('fechaCambio')!.dirty || editForm.get('fechaCambio')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('fechaCambio')?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_posicion">Posicion</label>
+                    <select class="form-control" id="field_posicion" name="posicion" formControlName="posicionId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="posicionOption.id" *ngFor="let posicionOption of posicions; trackBy: trackById">{{ posicionOption.titulo }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_candidatura">Candidatura</label>
+                    <select class="form-control" id="field_candidatura" name="candidatura" formControlName="candidaturaId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="candidaturaOption.id" *ngFor="let candidaturaOption of candidaturas; trackBy: trackById">{{ candidaturaOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_estadoCandidatura">Estado Candidatura</label>
+                    <select class="form-control" id="field_estadoCandidatura" name="estadoCandidatura" formControlName="estadoCandidaturaId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="estadoCandidaturaOption.id" *ngFor="let estadoCandidaturaOption of estadocandidaturas; trackBy: trackById">{{ estadoCandidaturaOption.nombre }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
