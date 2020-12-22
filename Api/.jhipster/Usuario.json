@@ -1,0 +1,33 @@
+{
+  "name": "Usuario",
+  "fields": [],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "usuario",
+      "relationshipName": "user",
+      "otherEntityField": "login",
+      "ownerSide": true,
+      "useJPADerivedIdentifier": true
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "unidadDeNegocio",
+      "otherEntityRelationshipName": "usuario",
+      "relationshipName": "unidadDeNegocio",
+      "otherEntityField": "nombre"
+    }
+  ],
+  "changelogDate": "20201214162051",
+  "entityTableName": "usuario",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

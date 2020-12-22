@@ -1,0 +1,29 @@
+{
+  "name": "EstadoPosicion",
+  "fields": [
+    {
+      "fieldName": "nombre",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "unique"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "historialPosicion",
+      "otherEntityRelationshipName": "estadoPosicion",
+      "relationshipName": "historialPosicion"
+    }
+  ],
+  "changelogDate": "20201210172751",
+  "entityTableName": "estado_posicion",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

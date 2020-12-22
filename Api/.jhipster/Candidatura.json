@@ -1,0 +1,51 @@
+{
+  "name": "Candidatura",
+  "fields": [],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "historialCandidatura",
+      "otherEntityRelationshipName": "candidatura",
+      "relationshipName": "historialCandidatura"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "estadoCandidatura",
+      "otherEntityRelationshipName": "candidatura",
+      "relationshipName": "estadoCandidatura",
+      "otherEntityField": "nombre"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "fuente",
+      "otherEntityRelationshipName": "candidatura",
+      "relationshipName": "fuente",
+      "otherEntityField": "nombre"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "posicion",
+      "otherEntityRelationshipName": "candidatura",
+      "relationshipName": "posicion",
+      "otherEntityField": "titulo"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "persona",
+      "otherEntityRelationshipName": "candidatura",
+      "relationshipName": "persona",
+      "otherEntityField": "documentoIdentidad"
+    }
+  ],
+  "changelogDate": "20201210172551",
+  "entityTableName": "candidatura",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <!--
+        Added the constraints for entity Posicion.
+    -->
+    <changeSet id="20201210172351-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="estado_posicion_id"
+                                 baseTableName="posicion"
+                                 constraintName="fk_posicion_estado_posicion_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="estado_posicion"/>
+
+        <addForeignKeyConstraint baseColumnNames="tipo_jornada_id"
+                                 baseTableName="posicion"
+                                 constraintName="fk_posicion_tipo_jornada_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="tipo_jornada"/>
+
+        <addForeignKeyConstraint baseColumnNames="unidad_de_negocio_id"
+                                 baseTableName="posicion"
+                                 constraintName="fk_posicion_unidad_de_negocio_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="unidad_de_negocio"/>
+
+    </changeSet>
+</databaseChangeLog>

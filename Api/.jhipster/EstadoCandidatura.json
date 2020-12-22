@@ -1,0 +1,29 @@
+{
+  "name": "EstadoCandidatura",
+  "fields": [
+    {
+      "fieldName": "nombre",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "unique"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "historialCandidatura",
+      "otherEntityRelationshipName": "estadoCandidatura",
+      "relationshipName": "historialCandidatura"
+    }
+  ],
+  "changelogDate": "20201210172851",
+  "entityTableName": "estado_candidatura",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

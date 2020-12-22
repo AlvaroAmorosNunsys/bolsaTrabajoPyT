@@ -1,0 +1,36 @@
+{
+  "name": "UnidadDeNegocio",
+  "fields": [
+    {
+      "fieldName": "nombre",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "250"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "posicion",
+      "otherEntityRelationshipName": "unidadDeNegocio",
+      "relationshipName": "posicion"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "usuario",
+      "otherEntityRelationshipName": "unidadDeNegocio",
+      "relationshipName": "usuario"
+    }
+  ],
+  "changelogDate": "20201210172451",
+  "entityTableName": "unidad_de_negocio",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

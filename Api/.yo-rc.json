@@ -1,0 +1,37 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.company"
+    },
+    "jhipsterVersion": "6.10.5",
+    "applicationType": "monolith",
+    "baseName": "api",
+    "packageName": "com.company",
+    "packageFolder": "com/company",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "postgresql",
+    "prodDatabaseType": "postgresql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": "eureka",
+    "buildTool": "gradle",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "MDMwNjFlZjNlYzQ3ODk0NjcxZWQwMjA3NzA4YmMxNDgzZmFhMmUxNjVkNTllMzk2MWI1ZmIzZTQ1MWY4MTkzZTMzMTBkNTAxY2Q1NTk1NjgwZWZmZGJlZGRkNmE4MzQyZDYyODc0OTU0MWM5ZmJlZGRkNmIxNzQ4YzYzMTY1YWM=",
+    "embeddableLaunchScript": false,
+    "creationTimestamp": 1607618853606,
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": false,
+    "clientPackageManager": "npm",
+    "blueprints": [],
+    "skipClient": true
+  }
+}

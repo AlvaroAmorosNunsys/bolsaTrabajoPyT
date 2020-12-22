@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <!--
+        Added the constraints for entity HistorialPosicion.
+    -->
+    <changeSet id="20201210173151-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="estado_posicion_id"
+                                 baseTableName="historial_posicion"
+                                 constraintName="fk_historial_posicion_estado_posicion_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="estado_posicion"/>
+
+        <addForeignKeyConstraint baseColumnNames="posicion_id"
+                                 baseTableName="historial_posicion"
+                                 constraintName="fk_historial_posicion_posicion_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="posicion"/>
+
+    </changeSet>
+</databaseChangeLog>

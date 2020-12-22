@@ -1,0 +1,50 @@
+{
+  "name": "HistorialPosicion",
+  "fields": [
+    {
+      "fieldName": "fechaCambio",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "porDefecto",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "fechaModificacion",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "nombreEditor",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "estadoPosicion",
+      "otherEntityRelationshipName": "historialPosicion",
+      "relationshipName": "estadoPosicion",
+      "otherEntityField": "nombre"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "posicion",
+      "otherEntityRelationshipName": "historialPosicion",
+      "relationshipName": "posicion",
+      "otherEntityField": "titulo"
+    }
+  ],
+  "changelogDate": "20201210173151",
+  "entityTableName": "historial_posicion",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

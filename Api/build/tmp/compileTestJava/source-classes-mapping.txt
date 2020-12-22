@@ -1,0 +1,132 @@
+com/company/repository/timezone/DateTimeWrapperRepository.java
+ com.company.repository.timezone.DateTimeWrapperRepository
+com/company/service/dto/PersonaDTOTest.java
+ com.company.service.dto.PersonaDTOTest
+com/company/service/UserServiceIT.java
+ com.company.service.UserServiceIT
+com/company/domain/EstadoCandidaturaTest.java
+ com.company.domain.EstadoCandidaturaTest
+com/company/web/rest/AccountResourceIT.java
+ com.company.web.rest.AccountResourceIT
+com/company/domain/HistorialPosicionTest.java
+ com.company.domain.HistorialPosicionTest
+com/company/repository/timezone/DateTimeWrapper.java
+ com.company.repository.timezone.DateTimeWrapper
+com/company/web/rest/WithUnauthenticatedMockUser.java
+ com.company.web.rest.WithUnauthenticatedMockUser
+ com.company.web.rest.WithUnauthenticatedMockUser$Factory
+com/company/web/rest/PosicionResourceIT.java
+ com.company.web.rest.PosicionResourceIT
+com/company/service/dto/FuenteDTOTest.java
+ com.company.service.dto.FuenteDTOTest
+com/company/service/dto/PosicionDTOTest.java
+ com.company.service.dto.PosicionDTOTest
+com/company/service/mapper/FuenteMapperTest.java
+ com.company.service.mapper.FuenteMapperTest
+com/company/security/SecurityUtilsUnitTest.java
+ com.company.security.SecurityUtilsUnitTest
+com/company/domain/PosicionTest.java
+ com.company.domain.PosicionTest
+com/company/service/AuditEventServiceIT.java
+ com.company.service.AuditEventServiceIT
+com/company/web/rest/TestUtil.java
+ com.company.web.rest.TestUtil
+ com.company.web.rest.TestUtil$ZonedDateTimeMatcher
+com/company/domain/PersonaTest.java
+ com.company.domain.PersonaTest
+com/company/web/rest/errors/ExceptionTranslatorTestController.java
+ com.company.web.rest.errors.ExceptionTranslatorTestController
+ com.company.web.rest.errors.ExceptionTranslatorTestController$TestDTO
+ com.company.web.rest.errors.ExceptionTranslatorTestController$TestResponseStatusException
+com/company/config/WebConfigurerTestController.java
+ com.company.config.WebConfigurerTestController
+com/company/domain/EstadoPosicionTest.java
+ com.company.domain.EstadoPosicionTest
+com/company/repository/CustomAuditEventRepositoryIT.java
+ com.company.repository.CustomAuditEventRepositoryIT
+com/company/service/mapper/EstadoPosicionMapperTest.java
+ com.company.service.mapper.EstadoPosicionMapperTest
+com/company/service/mapper/CandidaturaMapperTest.java
+ com.company.service.mapper.CandidaturaMapperTest
+com/company/config/NoOpMailConfiguration.java
+ com.company.config.NoOpMailConfiguration
+com/company/service/dto/UnidadDeNegocioDTOTest.java
+ com.company.service.dto.UnidadDeNegocioDTOTest
+com/company/ArchTest.java
+ com.company.ArchTest
+com/company/service/dto/TipoJornadaDTOTest.java
+ com.company.service.dto.TipoJornadaDTOTest
+com/company/web/rest/UserJWTControllerIT.java
+ com.company.web.rest.UserJWTControllerIT
+com/company/service/mapper/HistorialPosicionMapperTest.java
+ com.company.service.mapper.HistorialPosicionMapperTest
+com/company/web/rest/CandidaturaResourceIT.java
+ com.company.web.rest.CandidaturaResourceIT
+com/company/domain/UnidadDeNegocioTest.java
+ com.company.domain.UnidadDeNegocioTest
+com/company/web/rest/EstadoCandidaturaResourceIT.java
+ com.company.web.rest.EstadoCandidaturaResourceIT
+com/company/service/mapper/HistorialCandidaturaMapperTest.java
+ com.company.service.mapper.HistorialCandidaturaMapperTest
+com/company/service/mapper/UnidadDeNegocioMapperTest.java
+ com.company.service.mapper.UnidadDeNegocioMapperTest
+com/company/web/rest/HistorialPosicionResourceIT.java
+ com.company.web.rest.HistorialPosicionResourceIT
+com/company/service/mapper/UserMapperTest.java
+ com.company.service.mapper.UserMapperTest
+com/company/web/rest/AuditResourceIT.java
+ com.company.web.rest.AuditResourceIT
+com/company/web/rest/HistorialCandidaturaResourceIT.java
+ com.company.web.rest.HistorialCandidaturaResourceIT
+com/company/web/rest/FuenteResourceIT.java
+ com.company.web.rest.FuenteResourceIT
+com/company/web/rest/EstadoPosicionResourceIT.java
+ com.company.web.rest.EstadoPosicionResourceIT
+com/company/web/rest/errors/ExceptionTranslatorIT.java
+ com.company.web.rest.errors.ExceptionTranslatorIT
+com/company/domain/HistorialCandidaturaTest.java
+ com.company.domain.HistorialCandidaturaTest
+com/company/web/rest/PersonaResourceIT.java
+ com.company.web.rest.PersonaResourceIT
+com/company/service/mapper/EstadoCandidaturaMapperTest.java
+ com.company.service.mapper.EstadoCandidaturaMapperTest
+com/company/service/mapper/PosicionMapperTest.java
+ com.company.service.mapper.PosicionMapperTest
+com/company/security/jwt/TokenProviderTest.java
+ com.company.security.jwt.TokenProviderTest
+com/company/service/mapper/PersonaMapperTest.java
+ com.company.service.mapper.PersonaMapperTest
+com/company/security/jwt/JWTFilterTest.java
+ com.company.security.jwt.JWTFilterTest
+com/company/service/mapper/TipoJornadaMapperTest.java
+ com.company.service.mapper.TipoJornadaMapperTest
+com/company/service/dto/CandidaturaDTOTest.java
+ com.company.service.dto.CandidaturaDTOTest
+com/company/web/rest/UnidadDeNegocioResourceIT.java
+ com.company.web.rest.UnidadDeNegocioResourceIT
+com/company/security/DomainUserDetailsServiceIT.java
+ com.company.security.DomainUserDetailsServiceIT
+com/company/config/timezone/HibernateTimeZoneIT.java
+ com.company.config.timezone.HibernateTimeZoneIT
+com/company/service/dto/EstadoCandidaturaDTOTest.java
+ com.company.service.dto.EstadoCandidaturaDTOTest
+com/company/service/dto/HistorialCandidaturaDTOTest.java
+ com.company.service.dto.HistorialCandidaturaDTOTest
+com/company/web/rest/UserResourceIT.java
+ com.company.web.rest.UserResourceIT
+com/company/domain/CandidaturaTest.java
+ com.company.domain.CandidaturaTest
+com/company/service/dto/EstadoPosicionDTOTest.java
+ com.company.service.dto.EstadoPosicionDTOTest
+com/company/web/rest/TipoJornadaResourceIT.java
+ com.company.web.rest.TipoJornadaResourceIT
+com/company/config/WebConfigurerTest.java
+ com.company.config.WebConfigurerTest
+com/company/domain/FuenteTest.java
+ com.company.domain.FuenteTest
+com/company/service/MailServiceIT.java
+ com.company.service.MailServiceIT
+com/company/domain/TipoJornadaTest.java
+ com.company.domain.TipoJornadaTest
+com/company/service/dto/HistorialPosicionDTOTest.java
+ com.company.service.dto.HistorialPosicionDTOTest
